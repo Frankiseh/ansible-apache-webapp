@@ -1,22 +1,37 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+## Name of this role is web
+This Role is meant to provision apache2 on ubuntu machine and deploy a simple webapp template.
+the data are define in the variable section.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role are ment to run on a ansible remove servers which have to be mordfy on the inventory section of this role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+There are list of variable which role requres which is located at the /default/main.
+
+port: 			" " 	 the port of the default port of the apache server to be set
+myname: 		" " 	 name of the administrator
+packageName: 		" " 	 package name e.g apache2 for ubuntu
+packageName2: 		" "      requried before deployment
+serviceName: 		" " 	 name of web service
+fileLoc: 		" " 	 webcontent locathon
+downloadzipfile:        " "  	 downloaded file loacation
+unzipedfile: 		" "  	 unziped file location
+dest1:     		" "      webcontent file location
+webfolder: 		" "      served webcontent file location
+srctemp: 		" "  	 configuration file source location
+desttemp: 		" " 	 configuration file destination location
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+There is no dependency needed in this role.
 
 Example Playbook
 ----------------
@@ -25,7 +40,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - web
 
 License
 -------
