@@ -1,0 +1,6 @@
+--- 
+- name: Update Web Servers
+  hosts: web
+
+  roles: 
+    - web

@@ -1,0 +1,54 @@
+---
+- name: Install Apache in ubuntu machine 
+  become: yes
+  become_method: sudo
+  apt:
+    name: '{{ packageName }}'
+    state: latest 
+
+- name: Install Unzip in ubuntu machine 
+  become: yes
+  become_method: sudo
+  apt:
+    name: '{{ packageName2 }}'
+    state: present 
+
+- name: Download file from a file path
+  get_url:
+    url: '{{ fileLoc }}'
+    dest: '{{ downloadzipfile }}'
+
+- name: Unarchive a file that is already on the remote machine
+  become: yes
+  become_method: sudo
+  ansible.builtin.unarchive:
+    src: '{{ downloadzipfile }}'
+    dest: '{{ dest1 }}'
+    remote_src: yes
+
+- name: Copy web content to webfolder 
+  become: yes
+  become_method: sudo 
+  copy:
+    src: '{{ unzipedfile }}'
+    dest: '{{ webfolder }}'
+    remote_src: yes
+      
+- name: restarting a Apache Server 
+  become: yes
+  become_method: sudo
+  ansible.builtin.service:
+    name: '{{ serviceName }}'
+    state: started 
+  
+# Templating 
+- name: Templating Ports.conf changing the port number.
+  become: yes
+  become_method: sudo 
+  template: 
+    src: '{{ srctemp }}'
+    dest: '{{ desttemp }}'
+  # this is calling the handler by handler's name,  only when there is a change on this task 
+  notify: 
+    - ReStarting a Apache Server
+

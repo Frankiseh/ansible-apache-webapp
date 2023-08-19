@@ -1,0 +1,16 @@
+---
+# defaults file for web
+
+port: 80
+myname: 'Smartobi'
+age:  '20'
+packageName: 'apache2'
+packageName2: 'unzip'
+serviceName: 'apache2'
+fileLoc: 'https://www.free-css.com/assets/files/free-css-templates/download/page289/bliss.zip'
+downloadzipfile: '/tmp/bliss.zip'
+unzipedfile: '/var/www/bliss-html/'
+dest1: '/var/www'
+webfolder: '/var/www/html/'
+srctemp: 'templates/ports.conf.js'
+desttemp: '/etc/apache2/ports.conf'
